@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.figurine.dao.OrderTableDao">
+
+    <select id="selectByUserId" parameterType="com.figurine.entity.request.OrderTableRequestModel"
+            resultType="com.figurine.entity.response.OrderTableResponse">
+  SELECT ordertable.*,commodity.* FROM commodity,ordertable WHERE ordertable.userid=#{id} AND commodity.id=ordertable.comid
+  </select>
+
+    <delete id="deleteOrder" parameterType="com.figurine.entity.request.OrderTableDeleteRequestModel">
+    delete from ordertable where orderid = #{id}
+  </delete>
+
+    <insert id="insertOrder" parameterType="com.figurine.entity.request.OrderTableInsertRequestModel">
+    insert into ordertable (userid, comid, ordertime, state, amount)
+    values (#{userid}, #{comid}, #{ordertime}, #{state}, #{amount})
+  </insert>
+    <update id="selectOrder" parameterType="com.figurine.entity.request.OrderTableSubmitRequestModel">
+    update ordertable set  state = #{state} ,amount = #{amount} where orderid = #{orderid}
+  </update>
+</mapper>

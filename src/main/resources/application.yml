@@ -1,0 +1,21 @@
+server:
+  port: 8767
+jdbc:
+  type: mysql
+spring:
+  mvc:
+    static-path-pattern: /static/**
+  thymeleaf:
+    cache: false
+  application:
+    name: figurine
+   # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/figurine?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.figurine.entity
